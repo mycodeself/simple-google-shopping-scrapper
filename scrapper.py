@@ -20,10 +20,10 @@ def make_request(searchTerm):
     assert isinstance(searchTerm, str), 'Search term must be a string'
     escaped_search_term = searchTerm.replace(' ', '+')
     limit = 50
-    google_url = 'https://www.google.com/search?tbm=shop&q={}&num={}'.format(escaped_search_term, limit)
+    google_url = 'https://www.google.com/search?tbm=shop&q={}&num={}&tbs=vw:g'.format(escaped_search_term, limit)
     response = requests.get(google_url, headers={'User-Agent': random.choice(USER_AGENTS)})
     response.raise_for_status() 
-    print(response)
+    print(response.content)
  
     return response.content
 
